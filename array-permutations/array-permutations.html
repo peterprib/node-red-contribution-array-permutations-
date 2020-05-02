@@ -1,0 +1,83 @@
+
+<script type="text/javascript">
+    /*globals RED */
+    RED.nodes.registerType("Array Permutations", {
+        category: 'function',
+        color: '#fdeea2',
+        defaults: {
+            name: {value: "",required:false},
+            action: {value:"Loop",required:true},
+            arrayProperty:{value:"msg.payload"},
+            setSize: {value:2,required:true,validate:RED.validators.number()},
+            unique: {value:"true",required:true},
+            outputs: {value:2}
+        },
+	    inputs:1,
+        inputLabels: "",
+        outputs:2,
+        outputLabels: ["end","loop"],
+        icon: "five-red-dice.png",
+        label: function() {
+            return this.name||this._("Array Permutations");
+        },
+        labelStyle: function() {
+            return "node_label_italic";
+        },
+        oneditprepare: function() {
+        	let node=this;
+	       	$("#node-input-action").change(function() {
+				if(["Loop"].includes( $(this).val() )) {
+					node.outputs=2;
+				} else {
+					node.outputs=1;
+				}
+	       	});
+			$("#node-input-action").change();
+        },
+        oneditsave: function() {
+        },
+        oneditresize: function() {
+        },
+        resizeRule : function(file,newWidth) {
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="Array Permutations">
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-action"><i class="fa fa-list-ul"></i> Method</label>
+        <select id="node-input-action" placeholder="action">
+            <option value="Loop">Loop</option>
+            <option value="Messages">Messages</option>
+        </select>
+    </div>
+    <div class="form-row form-row-http-in-arrayProperty show">
+        <label for="node-input-arrayProperty" style="white-space: nowrap"><i class="icon-bookmark"></i> Array Property </label>
+        <input type="text" id="node-input-arrayProperty" placeholder="msg.payload">
+    </div>
+    <div class="form-row form-row-http-in-setSize show">
+        <label for="node-input-setSize"><i class="icon-bookmark"></i> Set Size</label>
+        <input type="number" id="node-input-setSize" placeholder="term" min=1 max=1000 step=1>
+    </div>
+    <div class="form-row">
+        <label for="node-input-unique"><i class="fa fa-list-ul"></i> Unique </label>
+        <select id="node-input-unique" placeholder="true">
+            <option value="true">True</option>
+            <option value="false">False</option>
+        </select>
+    </div>
+
+</script>
+
+<script type="text/x-red" data-help-name="Array Permutations">
+    <p>
+	Loops thru or generates all permutation of cells in array for a set size put same set in msg.payload.
+	If size of set equals 1 each cell in array is done once. If set to 2, each pair combination is done once.
+	Inclusive/exclusive 
+	</p>
+</script>

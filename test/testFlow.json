@@ -1,0 +1,144 @@
+[
+    {
+        "id": "758f824f.aba43c",
+        "type": "tab",
+        "label": "array permutations",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "7285d03d.7f981",
+        "type": "Array Permutations",
+        "z": "758f824f.aba43c",
+        "name": "loop",
+        "action": "Loop",
+        "outputs": 2,
+        "x": 270,
+        "y": 120,
+        "wires": [
+            [
+                "d54e1779.feca48"
+            ],
+            [
+                "5c33664d.e7cfd8"
+            ]
+        ]
+    },
+    {
+        "id": "359749c1.28cf66",
+        "type": "inject",
+        "z": "758f824f.aba43c",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 80,
+        "y": 100,
+        "wires": [
+            [
+                "7285d03d.7f981"
+            ]
+        ]
+    },
+    {
+        "id": "5c33664d.e7cfd8",
+        "type": "Monitor Flow",
+        "z": "758f824f.aba43c",
+        "name": "",
+        "x": 280,
+        "y": 200,
+        "wires": [
+            [
+                "7285d03d.7f981",
+                "78473735.bccb78"
+            ]
+        ]
+    },
+    {
+        "id": "d54e1779.feca48",
+        "type": "Monitor Flow",
+        "z": "758f824f.aba43c",
+        "name": "",
+        "x": 460,
+        "y": 120,
+        "wires": [
+            [
+                "78473735.bccb78"
+            ]
+        ]
+    },
+    {
+        "id": "b4daca62.98fc88",
+        "type": "inject",
+        "z": "758f824f.aba43c",
+        "name": "",
+        "topic": "",
+        "payload": "[1,2,3,4,5]",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 80,
+        "y": 160,
+        "wires": [
+            [
+                "7285d03d.7f981"
+            ]
+        ]
+    },
+    {
+        "id": "78473735.bccb78",
+        "type": "debug",
+        "z": "758f824f.aba43c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 580,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "5037f69f.708ad8",
+        "type": "Array Permutations",
+        "z": "758f824f.aba43c",
+        "name": "Messages",
+        "action": "Messages",
+        "outputs": 2,
+        "x": 250,
+        "y": 40,
+        "wires": [
+            [
+                "d54e1779.feca48"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "68735795.81c538",
+        "type": "inject",
+        "z": "758f824f.aba43c",
+        "name": "",
+        "topic": "",
+        "payload": "[1,2,3,4,5]",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 80,
+        "y": 40,
+        "wires": [
+            [
+                "5037f69f.708ad8"
+            ]
+        ]
+    }
+]
