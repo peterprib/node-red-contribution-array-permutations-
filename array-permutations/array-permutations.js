@@ -1,6 +1,6 @@
 const Logger = require("node-red-contrib-logger");
 const logger = new Logger("array-permutations");
-logger.sendInfo("Copyright 2019 Jaroslav Peter Prib");
+logger.sendInfo("Copyright 2020 Jaroslav Peter Prib");
 
 function sendMessages(RED,node,msg,a,i,p,setSize){
 	if(p.length<node.setSize){
@@ -25,33 +25,21 @@ function sendLoop(RED,node,msg){
 		return;
 	}
 	if(base.level<node.setSize) {
-		if(logger.active) logger.send({label:"sendLoop low level",j:j});
 		if(j<base.arrayLength) {
-			if(logger.active) logger.send({label:"sendLoop up level"});
 			base.level++;
 			sendLoop(RED,node,msg);
 		} else {
-			if(logger.active) logger.send({label:"sendLoop down level"});
 			base.level--;
 			base.index[base.level]++;
 			base.index[base.level+1]=base.index[base.level]+(node.unique&&base.level>0?1:0);
 			sendLoop(RED,node,msg);
 		}
 	} else {
-		if(logger.active) logger.send({label:"sendLoop top level",j:j});
-//		if(j<base.arrayLength) {
 			msg.payload=[];
 			for(var i=0;i<node.setSize;i++) msg.payload.push(base.index[i]);
 			base.level--;
 			base.index[base.level]++;
-			if(logger.active) logger.send({label:"sendLoop loop",base:base});
    	 		node.send([null,msg]);
-//		} else {
-//			if(logger.active) logger.send({label:"sendLoop down level"});
-//			base.level--;
-//			base.index[base.level]++;
-//			sendLoop(RED,node,msg);
-//  	 	}
 	}
 }
 
@@ -72,7 +60,7 @@ module.exports = function (RED) {
        			return;
        		}
    			msg._arrayPerm={array:a,arrayLength:a.length+1,index:[],payload:[],level:0};
-   			for(let i=0;i<node.setSize;i++) msg._arrayPerm.index.push(0);
+   			for(let i=0;i<node.setSize;i++) msg._arrayPerm.index.push(node.unique?i:0);
    			sendLoop(RED,node,msg);
         };
         try{

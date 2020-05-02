@@ -16,6 +16,8 @@
   "keywords": [
     "node-red",
     "permutations",
+    "combinations",
+    "repeat",
     "array"
   ],
   "node-red": {

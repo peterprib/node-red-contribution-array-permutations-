@@ -1,33 +1,36 @@
 [
     {
-        "id": "758f824f.aba43c",
+        "id": "63bfe52d.52feec",
         "type": "tab",
         "label": "array permutations",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "7285d03d.7f981",
+        "id": "1e4e0b3a.69ccb5",
         "type": "Array Permutations",
-        "z": "758f824f.aba43c",
-        "name": "loop",
+        "z": "63bfe52d.52feec",
+        "name": "loop size 2",
         "action": "Loop",
+        "arrayProperty": "msg.payload",
+        "setSize": "2",
+        "unique": "false",
         "outputs": 2,
-        "x": 270,
+        "x": 290,
         "y": 120,
         "wires": [
             [
-                "d54e1779.feca48"
+                "4c0c429f.2877dc"
             ],
             [
-                "5c33664d.e7cfd8"
+                "f633b83a.facb58"
             ]
         ]
     },
     {
-        "id": "359749c1.28cf66",
+        "id": "f505b911.f3ce38",
         "type": "inject",
-        "z": "758f824f.aba43c",
+        "z": "63bfe52d.52feec",
         "name": "",
         "topic": "",
         "payload": "",
@@ -40,41 +43,41 @@
         "y": 100,
         "wires": [
             [
-                "7285d03d.7f981"
+                "1e4e0b3a.69ccb5"
             ]
         ]
     },
     {
-        "id": "5c33664d.e7cfd8",
+        "id": "f633b83a.facb58",
         "type": "Monitor Flow",
-        "z": "758f824f.aba43c",
+        "z": "63bfe52d.52feec",
         "name": "",
         "x": 280,
         "y": 200,
         "wires": [
             [
-                "7285d03d.7f981",
-                "78473735.bccb78"
+                "1e4e0b3a.69ccb5",
+                "87f6c495.65ba68"
             ]
         ]
     },
     {
-        "id": "d54e1779.feca48",
+        "id": "4c0c429f.2877dc",
         "type": "Monitor Flow",
-        "z": "758f824f.aba43c",
+        "z": "63bfe52d.52feec",
         "name": "",
-        "x": 460,
-        "y": 120,
+        "x": 470,
+        "y": 60,
         "wires": [
             [
-                "78473735.bccb78"
+                "87f6c495.65ba68"
             ]
         ]
     },
     {
-        "id": "b4daca62.98fc88",
+        "id": "818c3877.e5b378",
         "type": "inject",
-        "z": "758f824f.aba43c",
+        "z": "63bfe52d.52feec",
         "name": "",
         "topic": "",
         "payload": "[1,2,3,4,5]",
@@ -87,44 +90,46 @@
         "y": 160,
         "wires": [
             [
-                "7285d03d.7f981"
+                "1e4e0b3a.69ccb5"
             ]
         ]
     },
     {
-        "id": "78473735.bccb78",
+        "id": "87f6c495.65ba68",
         "type": "debug",
-        "z": "758f824f.aba43c",
+        "z": "63bfe52d.52feec",
         "name": "",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
         "complete": "false",
-        "x": 580,
+        "x": 650,
         "y": 220,
         "wires": []
     },
     {
-        "id": "5037f69f.708ad8",
+        "id": "f0f81fed.14c8",
         "type": "Array Permutations",
-        "z": "758f824f.aba43c",
+        "z": "63bfe52d.52feec",
         "name": "Messages",
         "action": "Messages",
-        "outputs": 2,
+        "arrayProperty": "",
+        "setSize": "2",
+        "unique": "false",
+        "outputs": 1,
         "x": 250,
         "y": 40,
         "wires": [
             [
-                "d54e1779.feca48"
-            ],
-            []
+                "4c0c429f.2877dc"
+            ]
         ]
     },
     {
-        "id": "68735795.81c538",
+        "id": "fb806b19.219748",
         "type": "inject",
-        "z": "758f824f.aba43c",
+        "z": "63bfe52d.52feec",
         "name": "",
         "topic": "",
         "payload": "[1,2,3,4,5]",
@@ -137,7 +142,494 @@
         "y": 40,
         "wires": [
             [
-                "5037f69f.708ad8"
+                "f0f81fed.14c8"
+            ]
+        ]
+    },
+    {
+        "id": "c4f0b3dd.843e2",
+        "type": "Array Permutations",
+        "z": "63bfe52d.52feec",
+        "name": "unique set size 1",
+        "action": "Messages",
+        "arrayProperty": "msg.payload",
+        "setSize": "1",
+        "unique": "true",
+        "outputs": 1,
+        "x": 290,
+        "y": 300,
+        "wires": [
+            [
+                "91271f0d.5bef5"
+            ]
+        ]
+    },
+    {
+        "id": "22416711.ce5b58",
+        "type": "inject",
+        "z": "63bfe52d.52feec",
+        "name": "",
+        "topic": "",
+        "payload": "[1,2,3,4,5]",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 80,
+        "y": 300,
+        "wires": [
+            [
+                "c4f0b3dd.843e2"
+            ]
+        ]
+    },
+    {
+        "id": "91271f0d.5bef5",
+        "type": "Monitor Flow",
+        "z": "63bfe52d.52feec",
+        "name": "",
+        "x": 510,
+        "y": 300,
+        "wires": [
+            [
+                "87f6c495.65ba68"
+            ]
+        ]
+    },
+    {
+        "id": "4c6dded1.b969f",
+        "type": "Array Permutations",
+        "z": "63bfe52d.52feec",
+        "name": "unique set size 2",
+        "action": "Messages",
+        "arrayProperty": "msg.payload",
+        "setSize": "2",
+        "unique": "true",
+        "outputs": 1,
+        "x": 290,
+        "y": 360,
+        "wires": [
+            [
+                "91271f0d.5bef5"
+            ]
+        ]
+    },
+    {
+        "id": "1a24ce9a.fbb951",
+        "type": "Array Permutations",
+        "z": "63bfe52d.52feec",
+        "name": "unique set size 3",
+        "action": "Messages",
+        "arrayProperty": "msg.payload",
+        "setSize": "3",
+        "unique": "true",
+        "outputs": 1,
+        "x": 290,
+        "y": 420,
+        "wires": [
+            [
+                "91271f0d.5bef5"
+            ]
+        ]
+    },
+    {
+        "id": "2bc09b5b.c6b0d4",
+        "type": "inject",
+        "z": "63bfe52d.52feec",
+        "name": "",
+        "topic": "",
+        "payload": "[1,2,3,4,5]",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 80,
+        "y": 420,
+        "wires": [
+            [
+                "1a24ce9a.fbb951"
+            ]
+        ]
+    },
+    {
+        "id": "b9496f98.9a05f",
+        "type": "inject",
+        "z": "63bfe52d.52feec",
+        "name": "",
+        "topic": "",
+        "payload": "[1,2,3,4,5]",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 80,
+        "y": 360,
+        "wires": [
+            [
+                "4c6dded1.b969f"
+            ]
+        ]
+    },
+    {
+        "id": "86baa0e0.20e83",
+        "type": "Array Permutations",
+        "z": "63bfe52d.52feec",
+        "name": "not unique set size 1",
+        "action": "Messages",
+        "arrayProperty": "msg.payload",
+        "setSize": "1",
+        "unique": "false",
+        "outputs": 1,
+        "x": 300,
+        "y": 460,
+        "wires": [
+            [
+                "91271f0d.5bef5"
+            ]
+        ]
+    },
+    {
+        "id": "bc0eab1c.44a278",
+        "type": "inject",
+        "z": "63bfe52d.52feec",
+        "name": "",
+        "topic": "",
+        "payload": "[1,2,3,4,5]",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 80,
+        "y": 460,
+        "wires": [
+            [
+                "86baa0e0.20e83"
+            ]
+        ]
+    },
+    {
+        "id": "f951e787.d29078",
+        "type": "Array Permutations",
+        "z": "63bfe52d.52feec",
+        "name": "not unique set size 2",
+        "action": "Messages",
+        "arrayProperty": "msg.payload",
+        "setSize": "2",
+        "unique": "false",
+        "outputs": 1,
+        "x": 300,
+        "y": 520,
+        "wires": [
+            [
+                "91271f0d.5bef5"
+            ]
+        ]
+    },
+    {
+        "id": "ac8c79d3.f9a338",
+        "type": "Array Permutations",
+        "z": "63bfe52d.52feec",
+        "name": "not unique set size 3",
+        "action": "Messages",
+        "arrayProperty": "msg.payload",
+        "setSize": "3",
+        "unique": "false",
+        "outputs": 1,
+        "x": 300,
+        "y": 580,
+        "wires": [
+            [
+                "91271f0d.5bef5"
+            ]
+        ]
+    },
+    {
+        "id": "c6cbf926.65cf68",
+        "type": "inject",
+        "z": "63bfe52d.52feec",
+        "name": "",
+        "topic": "",
+        "payload": "[1,2,3,4,5]",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 80,
+        "y": 580,
+        "wires": [
+            [
+                "ac8c79d3.f9a338"
+            ]
+        ]
+    },
+    {
+        "id": "c0982955.fea138",
+        "type": "inject",
+        "z": "63bfe52d.52feec",
+        "name": "",
+        "topic": "",
+        "payload": "[1,2,3,4,5]",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 80,
+        "y": 520,
+        "wires": [
+            [
+                "f951e787.d29078"
+            ]
+        ]
+    },
+    {
+        "id": "71b8cf65.9545e",
+        "type": "inject",
+        "z": "63bfe52d.52feec",
+        "name": "",
+        "topic": "",
+        "payload": "[1,2,3,4,5]",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 80,
+        "y": 720,
+        "wires": [
+            [
+                "ce6223f2.a39d3"
+            ]
+        ]
+    },
+    {
+        "id": "ce6223f2.a39d3",
+        "type": "Array Permutations",
+        "z": "63bfe52d.52feec",
+        "name": "loop size 1",
+        "action": "Loop",
+        "arrayProperty": "msg.payload",
+        "setSize": "1",
+        "unique": "false",
+        "outputs": 2,
+        "x": 270,
+        "y": 680,
+        "wires": [
+            [
+                "9c967d96.bfc73"
+            ],
+            [
+                "6a8165ab.4d2c5c"
+            ]
+        ]
+    },
+    {
+        "id": "6a8165ab.4d2c5c",
+        "type": "Monitor Flow",
+        "z": "63bfe52d.52feec",
+        "name": "",
+        "x": 260,
+        "y": 760,
+        "wires": [
+            [
+                "ce6223f2.a39d3",
+                "3d391d34.76d8e2"
+            ]
+        ]
+    },
+    {
+        "id": "3d391d34.76d8e2",
+        "type": "debug",
+        "z": "63bfe52d.52feec",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 630,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "9c967d96.bfc73",
+        "type": "Monitor Flow",
+        "z": "63bfe52d.52feec",
+        "name": "",
+        "x": 470,
+        "y": 680,
+        "wires": [
+            [
+                "3d391d34.76d8e2"
+            ]
+        ]
+    },
+    {
+        "id": "4799f709.ed7368",
+        "type": "inject",
+        "z": "63bfe52d.52feec",
+        "name": "",
+        "topic": "",
+        "payload": "[1,2,3,4,5]",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 80,
+        "y": 880,
+        "wires": [
+            [
+                "8d7f454e.fa6e88"
+            ]
+        ]
+    },
+    {
+        "id": "8d7f454e.fa6e88",
+        "type": "Array Permutations",
+        "z": "63bfe52d.52feec",
+        "name": "loop size 3",
+        "action": "Loop",
+        "arrayProperty": "msg.payload",
+        "setSize": "3",
+        "unique": "false",
+        "outputs": 2,
+        "x": 270,
+        "y": 840,
+        "wires": [
+            [
+                "b2084a1b.777b08"
+            ],
+            [
+                "cb84ca02.f8b558"
+            ]
+        ]
+    },
+    {
+        "id": "cb84ca02.f8b558",
+        "type": "Monitor Flow",
+        "z": "63bfe52d.52feec",
+        "name": "",
+        "x": 260,
+        "y": 920,
+        "wires": [
+            [
+                "8d7f454e.fa6e88",
+                "74181e66.534ca"
+            ]
+        ]
+    },
+    {
+        "id": "74181e66.534ca",
+        "type": "debug",
+        "z": "63bfe52d.52feec",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 630,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "b2084a1b.777b08",
+        "type": "Monitor Flow",
+        "z": "63bfe52d.52feec",
+        "name": "",
+        "x": 470,
+        "y": 840,
+        "wires": [
+            [
+                "74181e66.534ca"
+            ]
+        ]
+    },
+    {
+        "id": "ce3e2c84.5f7ab",
+        "type": "inject",
+        "z": "63bfe52d.52feec",
+        "name": "",
+        "topic": "",
+        "payload": "[1,2,3,4,5]",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 80,
+        "y": 1060,
+        "wires": [
+            [
+                "6f8b8f9d.c0584"
+            ]
+        ]
+    },
+    {
+        "id": "6f8b8f9d.c0584",
+        "type": "Array Permutations",
+        "z": "63bfe52d.52feec",
+        "name": "loop size 3 unique",
+        "action": "Loop",
+        "arrayProperty": "msg.payload",
+        "setSize": "3",
+        "unique": "true",
+        "outputs": 2,
+        "x": 290,
+        "y": 1020,
+        "wires": [
+            [
+                "1b4e31a4.a1f23e"
+            ],
+            [
+                "7aaa19b6.c52ab8"
+            ]
+        ]
+    },
+    {
+        "id": "7aaa19b6.c52ab8",
+        "type": "Monitor Flow",
+        "z": "63bfe52d.52feec",
+        "name": "",
+        "x": 260,
+        "y": 1100,
+        "wires": [
+            [
+                "6f8b8f9d.c0584",
+                "b03aed4a.86a8e"
+            ]
+        ]
+    },
+    {
+        "id": "b03aed4a.86a8e",
+        "type": "debug",
+        "z": "63bfe52d.52feec",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 630,
+        "y": 1120,
+        "wires": []
+    },
+    {
+        "id": "1b4e31a4.a1f23e",
+        "type": "Monitor Flow",
+        "z": "63bfe52d.52feec",
+        "name": "",
+        "x": 470,
+        "y": 1020,
+        "wires": [
+            [
+                "b03aed4a.86a8e"
             ]
         ]
     }
