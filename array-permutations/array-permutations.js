@@ -69,6 +69,7 @@ module.exports = function (RED) {
         		node.sendData=node["sendData"+node.action];
         	else 
         		throw Error("Method function "+node.action+" not found");
+        	node.status({fill:"green",shape:"ring"});
         } catch(e) {
     		node.error(e);
         	node.status({fill:"red",shape:"ring",text:"Invalid setup "+e.toString()});
@@ -79,6 +80,7 @@ module.exports = function (RED) {
             	const a=node.getData(msg);
             	if(!(Array.isArray(a)))  throw Error(node.arrayProperty+ " is not array");
             	if(node.setSize>a.length) throw Error("Set size of "+node.setSize+" > array "+a.length);
+            	if(a.length*node.setSize>100) node.status({fill:"yellow",shape:"ring",text:"large number messages array size: "+a.length+" set size:"+node.setSize})
             	node.sendData(msg,a);
             } catch(ex) {
             	node.error(ex,msg);

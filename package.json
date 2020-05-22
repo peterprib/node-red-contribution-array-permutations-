@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-array-permutations",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Node-red permutations of an array as repeat or messages.",
   "dependencies": {
   	"node-red-contrib-logger":"*"
