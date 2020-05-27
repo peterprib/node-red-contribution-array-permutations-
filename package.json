@@ -3,7 +3,7 @@
   "version": "0.0.2",
   "description": "Node-red permutations of an array as repeat or messages.",
   "dependencies": {
-  	"node-red-contrib-logger":"*"
+    "node-red-contrib-logger": "*"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
