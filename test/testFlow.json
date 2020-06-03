@@ -1,36 +1,39 @@
 [
     {
-        "id": "63bfe52d.52feec",
+        "id": "420e8fe5.037f1",
         "type": "tab",
         "label": "array permutations",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "1e4e0b3a.69ccb5",
+        "id": "78e605dc.14d8ac",
         "type": "Array Permutations",
-        "z": "63bfe52d.52feec",
+        "z": "420e8fe5.037f1",
         "name": "loop size 2",
         "action": "Loop",
         "arrayProperty": "msg.payload",
         "setSize": "2",
         "unique": "false",
-        "outputs": 2,
+        "outputs": 3,
         "x": 290,
         "y": 120,
         "wires": [
             [
-                "4c0c429f.2877dc"
+                "f1222f3b.1d25b"
             ],
             [
-                "f633b83a.facb58"
+                "68c89de7.f6e5c4"
+            ],
+            [
+                "c9ec721c.87b19"
             ]
         ]
     },
     {
-        "id": "f505b911.f3ce38",
+        "id": "bf22db0b.d575d8",
         "type": "inject",
-        "z": "63bfe52d.52feec",
+        "z": "420e8fe5.037f1",
         "name": "",
         "topic": "",
         "payload": "",
@@ -43,41 +46,41 @@
         "y": 100,
         "wires": [
             [
-                "1e4e0b3a.69ccb5"
+                "78e605dc.14d8ac"
             ]
         ]
     },
     {
-        "id": "f633b83a.facb58",
+        "id": "c9ec721c.87b19",
         "type": "Monitor Flow",
-        "z": "63bfe52d.52feec",
+        "z": "420e8fe5.037f1",
         "name": "",
         "x": 280,
         "y": 200,
         "wires": [
             [
-                "1e4e0b3a.69ccb5",
-                "87f6c495.65ba68"
+                "78e605dc.14d8ac",
+                "6f89235f.330c7c"
             ]
         ]
     },
     {
-        "id": "4c0c429f.2877dc",
+        "id": "876f4fe3.bc4bf",
         "type": "Monitor Flow",
-        "z": "63bfe52d.52feec",
+        "z": "420e8fe5.037f1",
         "name": "",
         "x": 470,
         "y": 60,
         "wires": [
             [
-                "87f6c495.65ba68"
+                "6f89235f.330c7c"
             ]
         ]
     },
     {
-        "id": "818c3877.e5b378",
+        "id": "47b74613.2101c8",
         "type": "inject",
-        "z": "63bfe52d.52feec",
+        "z": "420e8fe5.037f1",
         "name": "",
         "topic": "",
         "payload": "[1,2,3,4,5]",
@@ -90,46 +93,47 @@
         "y": 160,
         "wires": [
             [
-                "1e4e0b3a.69ccb5"
+                "78e605dc.14d8ac"
             ]
         ]
     },
     {
-        "id": "87f6c495.65ba68",
+        "id": "6f89235f.330c7c",
         "type": "debug",
-        "z": "63bfe52d.52feec",
+        "z": "420e8fe5.037f1",
         "name": "",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
         "complete": "false",
-        "x": 650,
-        "y": 220,
+        "x": 730,
+        "y": 200,
         "wires": []
     },
     {
-        "id": "f0f81fed.14c8",
+        "id": "947a5178.f3c61",
         "type": "Array Permutations",
-        "z": "63bfe52d.52feec",
+        "z": "420e8fe5.037f1",
         "name": "Messages",
         "action": "Messages",
         "arrayProperty": "",
         "setSize": "2",
         "unique": "false",
-        "outputs": 1,
+        "outputs": 2,
         "x": 250,
         "y": 40,
         "wires": [
             [
-                "4c0c429f.2877dc"
-            ]
+                "876f4fe3.bc4bf"
+            ],
+            []
         ]
     },
     {
-        "id": "fb806b19.219748",
+        "id": "3631d19c.4f8aee",
         "type": "inject",
-        "z": "63bfe52d.52feec",
+        "z": "420e8fe5.037f1",
         "name": "",
         "topic": "",
         "payload": "[1,2,3,4,5]",
@@ -142,32 +146,33 @@
         "y": 40,
         "wires": [
             [
-                "f0f81fed.14c8"
+                "947a5178.f3c61"
             ]
         ]
     },
     {
-        "id": "c4f0b3dd.843e2",
+        "id": "1bbde774.d0af89",
         "type": "Array Permutations",
-        "z": "63bfe52d.52feec",
+        "z": "420e8fe5.037f1",
         "name": "unique set size 1",
         "action": "Messages",
         "arrayProperty": "msg.payload",
         "setSize": "1",
         "unique": "true",
-        "outputs": 1,
+        "outputs": 2,
         "x": 290,
         "y": 300,
         "wires": [
             [
-                "91271f0d.5bef5"
-            ]
+                "ed8eeb8d.9bbfe8"
+            ],
+            []
         ]
     },
     {
-        "id": "22416711.ce5b58",
+        "id": "30f7be3b.c64462",
         "type": "inject",
-        "z": "63bfe52d.52feec",
+        "z": "420e8fe5.037f1",
         "name": "",
         "topic": "",
         "payload": "[1,2,3,4,5]",
@@ -180,63 +185,65 @@
         "y": 300,
         "wires": [
             [
-                "c4f0b3dd.843e2"
+                "1bbde774.d0af89"
             ]
         ]
     },
     {
-        "id": "91271f0d.5bef5",
+        "id": "ed8eeb8d.9bbfe8",
         "type": "Monitor Flow",
-        "z": "63bfe52d.52feec",
+        "z": "420e8fe5.037f1",
         "name": "",
         "x": 510,
         "y": 300,
         "wires": [
             [
-                "87f6c495.65ba68"
+                "6f89235f.330c7c"
             ]
         ]
     },
     {
-        "id": "4c6dded1.b969f",
+        "id": "521f931f.7b30bc",
         "type": "Array Permutations",
-        "z": "63bfe52d.52feec",
+        "z": "420e8fe5.037f1",
         "name": "unique set size 2",
         "action": "Messages",
         "arrayProperty": "msg.payload",
         "setSize": "2",
         "unique": "true",
-        "outputs": 1,
+        "outputs": 2,
         "x": 290,
         "y": 360,
         "wires": [
             [
-                "91271f0d.5bef5"
-            ]
+                "ed8eeb8d.9bbfe8"
+            ],
+            []
         ]
     },
     {
-        "id": "1a24ce9a.fbb951",
+        "id": "623c09bb.f821d8",
         "type": "Array Permutations",
-        "z": "63bfe52d.52feec",
+        "z": "420e8fe5.037f1",
         "name": "unique set size 3",
         "action": "Messages",
         "arrayProperty": "msg.payload",
         "setSize": "3",
         "unique": "true",
-        "outputs": 1,
+        "outputs": 2,
         "x": 290,
         "y": 420,
         "wires": [
             [
-                "91271f0d.5bef5"
-            ]
+                "ed8eeb8d.9bbfe8"
+            ],
+            []
         ]
     },
     {
-        "id": "2bc09b5b.c6b0d4",
+        "id": "bf22e78.9767818",
         "type": "inject",
-        "z": "63bfe52d.52feec",
+        "z": "420e8fe5.037f1",
         "name": "",
         "topic": "",
         "payload": "[1,2,3,4,5]",
@@ -249,14 +256,14 @@
         "y": 420,
         "wires": [
             [
-                "1a24ce9a.fbb951"
+                "623c09bb.f821d8"
             ]
         ]
     },
     {
-        "id": "b9496f98.9a05f",
+        "id": "2c095e8c.6291e2",
         "type": "inject",
-        "z": "63bfe52d.52feec",
+        "z": "420e8fe5.037f1",
         "name": "",
         "topic": "",
         "payload": "[1,2,3,4,5]",
@@ -269,32 +276,33 @@
         "y": 360,
         "wires": [
             [
-                "4c6dded1.b969f"
+                "521f931f.7b30bc"
             ]
         ]
     },
     {
-        "id": "86baa0e0.20e83",
+        "id": "a532eb05.eddd28",
         "type": "Array Permutations",
-        "z": "63bfe52d.52feec",
+        "z": "420e8fe5.037f1",
         "name": "not unique set size 1",
         "action": "Messages",
         "arrayProperty": "msg.payload",
         "setSize": "1",
         "unique": "false",
-        "outputs": 1,
+        "outputs": 2,
         "x": 300,
         "y": 460,
         "wires": [
             [
-                "91271f0d.5bef5"
-            ]
+                "ed8eeb8d.9bbfe8"
+            ],
+            []
         ]
     },
     {
-        "id": "bc0eab1c.44a278",
+        "id": "27c4675e.d76858",
         "type": "inject",
-        "z": "63bfe52d.52feec",
+        "z": "420e8fe5.037f1",
         "name": "",
         "topic": "",
         "payload": "[1,2,3,4,5]",
@@ -307,50 +315,52 @@
         "y": 460,
         "wires": [
             [
-                "86baa0e0.20e83"
+                "a532eb05.eddd28"
             ]
         ]
     },
     {
-        "id": "f951e787.d29078",
+        "id": "90f1518.eaa15b",
         "type": "Array Permutations",
-        "z": "63bfe52d.52feec",
+        "z": "420e8fe5.037f1",
         "name": "not unique set size 2",
         "action": "Messages",
         "arrayProperty": "msg.payload",
         "setSize": "2",
         "unique": "false",
-        "outputs": 1,
+        "outputs": 2,
         "x": 300,
         "y": 520,
         "wires": [
             [
-                "91271f0d.5bef5"
-            ]
+                "ed8eeb8d.9bbfe8"
+            ],
+            []
         ]
     },
     {
-        "id": "ac8c79d3.f9a338",
+        "id": "7bdc02aa.b2f2fc",
         "type": "Array Permutations",
-        "z": "63bfe52d.52feec",
+        "z": "420e8fe5.037f1",
         "name": "not unique set size 3",
         "action": "Messages",
         "arrayProperty": "msg.payload",
         "setSize": "3",
         "unique": "false",
-        "outputs": 1,
+        "outputs": 2,
         "x": 300,
         "y": 580,
         "wires": [
             [
-                "91271f0d.5bef5"
-            ]
+                "ed8eeb8d.9bbfe8"
+            ],
+            []
         ]
     },
     {
-        "id": "c6cbf926.65cf68",
+        "id": "b7e1a38a.ad38e",
         "type": "inject",
-        "z": "63bfe52d.52feec",
+        "z": "420e8fe5.037f1",
         "name": "",
         "topic": "",
         "payload": "[1,2,3,4,5]",
@@ -363,14 +373,14 @@
         "y": 580,
         "wires": [
             [
-                "ac8c79d3.f9a338"
+                "7bdc02aa.b2f2fc"
             ]
         ]
     },
     {
-        "id": "c0982955.fea138",
+        "id": "74b09d71.a60424",
         "type": "inject",
-        "z": "63bfe52d.52feec",
+        "z": "420e8fe5.037f1",
         "name": "",
         "topic": "",
         "payload": "[1,2,3,4,5]",
@@ -383,14 +393,14 @@
         "y": 520,
         "wires": [
             [
-                "f951e787.d29078"
+                "90f1518.eaa15b"
             ]
         ]
     },
     {
-        "id": "71b8cf65.9545e",
+        "id": "fdf2487d.483c18",
         "type": "inject",
-        "z": "63bfe52d.52feec",
+        "z": "420e8fe5.037f1",
         "name": "",
         "topic": "",
         "payload": "[1,2,3,4,5]",
@@ -403,49 +413,50 @@
         "y": 720,
         "wires": [
             [
-                "ce6223f2.a39d3"
+                "2242f156.de7e8e"
             ]
         ]
     },
     {
-        "id": "ce6223f2.a39d3",
+        "id": "2242f156.de7e8e",
         "type": "Array Permutations",
-        "z": "63bfe52d.52feec",
+        "z": "420e8fe5.037f1",
         "name": "loop size 1",
         "action": "Loop",
         "arrayProperty": "msg.payload",
         "setSize": "1",
         "unique": "false",
-        "outputs": 2,
+        "outputs": 3,
         "x": 270,
         "y": 680,
         "wires": [
             [
-                "9c967d96.bfc73"
+                "f6096c34.2b7f4"
             ],
+            [],
             [
-                "6a8165ab.4d2c5c"
+                "3b4281ca.a96bde"
             ]
         ]
     },
     {
-        "id": "6a8165ab.4d2c5c",
+        "id": "3b4281ca.a96bde",
         "type": "Monitor Flow",
-        "z": "63bfe52d.52feec",
+        "z": "420e8fe5.037f1",
         "name": "",
         "x": 260,
         "y": 760,
         "wires": [
             [
-                "ce6223f2.a39d3",
-                "3d391d34.76d8e2"
+                "2242f156.de7e8e",
+                "d75b5f9c.deebb"
             ]
         ]
     },
     {
-        "id": "3d391d34.76d8e2",
+        "id": "d75b5f9c.deebb",
         "type": "debug",
-        "z": "63bfe52d.52feec",
+        "z": "420e8fe5.037f1",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -457,22 +468,22 @@
         "wires": []
     },
     {
-        "id": "9c967d96.bfc73",
+        "id": "f6096c34.2b7f4",
         "type": "Monitor Flow",
-        "z": "63bfe52d.52feec",
+        "z": "420e8fe5.037f1",
         "name": "",
         "x": 470,
         "y": 680,
         "wires": [
             [
-                "3d391d34.76d8e2"
+                "d75b5f9c.deebb"
             ]
         ]
     },
     {
-        "id": "4799f709.ed7368",
+        "id": "1675e66f.3914ba",
         "type": "inject",
-        "z": "63bfe52d.52feec",
+        "z": "420e8fe5.037f1",
         "name": "",
         "topic": "",
         "payload": "[1,2,3,4,5]",
@@ -485,49 +496,50 @@
         "y": 880,
         "wires": [
             [
-                "8d7f454e.fa6e88"
+                "28b5fc6.ecbfe04"
             ]
         ]
     },
     {
-        "id": "8d7f454e.fa6e88",
+        "id": "28b5fc6.ecbfe04",
         "type": "Array Permutations",
-        "z": "63bfe52d.52feec",
+        "z": "420e8fe5.037f1",
         "name": "loop size 3",
         "action": "Loop",
         "arrayProperty": "msg.payload",
         "setSize": "3",
         "unique": "false",
-        "outputs": 2,
+        "outputs": 3,
         "x": 270,
         "y": 840,
         "wires": [
             [
-                "b2084a1b.777b08"
+                "70ad7437.19fc7c"
             ],
+            [],
             [
-                "cb84ca02.f8b558"
+                "f2e74dcc.4114e"
             ]
         ]
     },
     {
-        "id": "cb84ca02.f8b558",
+        "id": "f2e74dcc.4114e",
         "type": "Monitor Flow",
-        "z": "63bfe52d.52feec",
+        "z": "420e8fe5.037f1",
         "name": "",
         "x": 260,
         "y": 920,
         "wires": [
             [
-                "8d7f454e.fa6e88",
-                "74181e66.534ca"
+                "28b5fc6.ecbfe04",
+                "990f58d3.2d5648"
             ]
         ]
     },
     {
-        "id": "74181e66.534ca",
+        "id": "990f58d3.2d5648",
         "type": "debug",
-        "z": "63bfe52d.52feec",
+        "z": "420e8fe5.037f1",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -539,22 +551,22 @@
         "wires": []
     },
     {
-        "id": "b2084a1b.777b08",
+        "id": "70ad7437.19fc7c",
         "type": "Monitor Flow",
-        "z": "63bfe52d.52feec",
+        "z": "420e8fe5.037f1",
         "name": "",
         "x": 470,
         "y": 840,
         "wires": [
             [
-                "74181e66.534ca"
+                "990f58d3.2d5648"
             ]
         ]
     },
     {
-        "id": "ce3e2c84.5f7ab",
+        "id": "82c2dad7.3e4318",
         "type": "inject",
-        "z": "63bfe52d.52feec",
+        "z": "420e8fe5.037f1",
         "name": "",
         "topic": "",
         "payload": "[1,2,3,4,5]",
@@ -567,49 +579,50 @@
         "y": 1060,
         "wires": [
             [
-                "6f8b8f9d.c0584"
+                "4444a76d.129c88"
             ]
         ]
     },
     {
-        "id": "6f8b8f9d.c0584",
+        "id": "4444a76d.129c88",
         "type": "Array Permutations",
-        "z": "63bfe52d.52feec",
+        "z": "420e8fe5.037f1",
         "name": "loop size 3 unique",
         "action": "Loop",
         "arrayProperty": "msg.payload",
         "setSize": "3",
         "unique": "true",
-        "outputs": 2,
+        "outputs": 3,
         "x": 290,
-        "y": 1020,
+        "y": 1000,
         "wires": [
             [
-                "1b4e31a4.a1f23e"
+                "5606370e.386dd8"
             ],
+            [],
             [
-                "7aaa19b6.c52ab8"
+                "e756c243.ba629"
             ]
         ]
     },
     {
-        "id": "7aaa19b6.c52ab8",
+        "id": "e756c243.ba629",
         "type": "Monitor Flow",
-        "z": "63bfe52d.52feec",
+        "z": "420e8fe5.037f1",
         "name": "",
         "x": 260,
         "y": 1100,
         "wires": [
             [
-                "6f8b8f9d.c0584",
-                "b03aed4a.86a8e"
+                "4444a76d.129c88",
+                "3797a729.d38fb8"
             ]
         ]
     },
     {
-        "id": "b03aed4a.86a8e",
+        "id": "3797a729.d38fb8",
         "type": "debug",
-        "z": "63bfe52d.52feec",
+        "z": "420e8fe5.037f1",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -621,15 +634,65 @@
         "wires": []
     },
     {
-        "id": "1b4e31a4.a1f23e",
+        "id": "5606370e.386dd8",
         "type": "Monitor Flow",
-        "z": "63bfe52d.52feec",
+        "z": "420e8fe5.037f1",
         "name": "",
-        "x": 470,
-        "y": 1020,
+        "x": 510,
+        "y": 1000,
         "wires": [
             [
-                "b03aed4a.86a8e"
+                "3797a729.d38fb8"
+            ]
+        ]
+    },
+    {
+        "id": "68c89de7.f6e5c4",
+        "type": "debug",
+        "z": "420e8fe5.037f1",
+        "name": "error",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 710,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "f1222f3b.1d25b",
+        "type": "debug",
+        "z": "420e8fe5.037f1",
+        "name": "ok",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 710,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "2327c77.6798538",
+        "type": "inject",
+        "z": "420e8fe5.037f1",
+        "name": "",
+        "topic": "",
+        "payload": "[1]",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 70,
+        "y": 200,
+        "wires": [
+            [
+                "78e605dc.14d8ac"
             ]
         ]
     }

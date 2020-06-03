@@ -10,12 +10,14 @@
             arrayProperty:{value:"msg.payload"},
             setSize: {value:2,required:true,validate:RED.validators.number()},
             unique: {value:"true",required:true},
-            outputs: {value:2}
+            outputs: {value:3}
         },
 	    inputs:1,
         inputLabels: "",
-        outputs:2,
-        outputLabels: ["end","loop"],
+        outputs:3,
+        outputLabels: function(port) {
+			return this.action=="Loop"?(["end","error","loop"])[port]:(["messages","error"])[port];
+		},
         icon: "five-red-dice.png",
         label: function() {
             return this.name||this._("Array Permutations");
@@ -27,9 +29,9 @@
         	let node=this;
 	       	$("#node-input-action").change(function() {
 				if(["Loop"].includes( $(this).val() )) {
-					node.outputs=2;
+					node.outputs=3;
 				} else {
-					node.outputs=1;
+					node.outputs=2;
 				}
 	       	});
 			$("#node-input-action").change();

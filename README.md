@@ -26,6 +26,10 @@ Folder test contains a flow that tests the various combinations.
 
 # Version
 
+0.0.4 fix bug with loop and ensure all separated messages have unique id.
+
+0.0.3 if error set msg.error and send to error port.  Fix bug with loop
+
 0.0.1 base
 
 # Author

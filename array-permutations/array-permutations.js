@@ -10,13 +10,15 @@ function sendMessages(RED,node,msg,a,i,p,setSize){
 	} else {
    		const newMsg=RED.util.cloneMessage(msg);
    	 	newMsg.payload=p;
+   	 	newMsg._msgid=newMsg._msgid+":"+(++msg._arrayPermCount);
    	 	node.send(newMsg);
 	}
 }
 
 function sendLoop(RED,node,msg){
-	if(logger.active) logger.send({label:"sendLoop",setSize:node.setSize,arrayPerm:msg._arrayPerm});
+//	if(logger.active) logger.send({label:"sendLoop",setSize:node.setSize,arrayPerm:msg._arrayPerm});
 	const base=msg._arrayPerm,
+		arrayData=base.array,
 		j=base.index[base.level];
 	if(base.level<0){
 		delete msg._arrayPerm;
@@ -35,11 +37,16 @@ function sendLoop(RED,node,msg){
 			sendLoop(RED,node,msg);
 		}
 	} else {
-			msg.payload=[];
-			for(var i=0;i<node.setSize;i++) msg.payload.push(base.index[i]);
-			base.level--;
-			base.index[base.level]++;
-   	 		node.send([null,msg]);
+		msg.payload=[];
+		for(var i=0;i<node.setSize;i++) {
+			const v=arrayData[base.index[i]];
+			if(v) msg.payload.push(v);
+			else break;
+		}
+		base.level--;
+		base.index[base.level]++;
+		if(i<node.setSize) sendLoop(RED,node,msg);
+		else node.send([null,null,msg]);
 	}
 }
 
@@ -50,8 +57,8 @@ module.exports = function (RED) {
         let node=Object.assign(this,n);
         node.unique=(node.unique=="true");
         node.sendDataMessages=function(msg,a) {
+        	msg._arrayPermCount=0;
         	sendMessages(RED,node,msg,a,0,[]);
-        	delete msg;
         };
         node.sendDataLoop=function(msg,a) {
        		if(logger.active) logger.send({label:"sendDataLoop",_arrayPermIndex:msg._arrayPermIndex});
@@ -70,20 +77,27 @@ module.exports = function (RED) {
         	else 
         		throw Error("Method function "+node.action+" not found");
         	node.status({fill:"green",shape:"ring"});
-        } catch(e) {
-    		node.error(e);
-        	node.status({fill:"red",shape:"ring",text:"Invalid setup "+e.toString()});
+        } catch(ex) {
+    		node.error(ex.message);
+        	node.status({fill:"red",shape:"ring",text:"Invalid setup "+ex.message});
         } 
 
         node.on("input", function(msg) {
             try {
-            	const a=node.getData(msg);
+            	const a=node.getData(msg,node);
+            	if(msg._arrayPerm) {
+            		node.sendData(msg,a);
+            		return;
+            	}
             	if(!(Array.isArray(a)))  throw Error(node.arrayProperty+ " is not array");
             	if(node.setSize>a.length) throw Error("Set size of "+node.setSize+" > array "+a.length);
             	if(a.length*node.setSize>100) node.status({fill:"yellow",shape:"ring",text:"large number messages array size: "+a.length+" set size:"+node.setSize})
             	node.sendData(msg,a);
             } catch(ex) {
-            	node.error(ex,msg);
+            	node.status({fill:"red",shape:"ring",text:"Failure "+ex.message});
+            	node.error(ex.message);
+            	msg.error=ex.message;
+            	node.send([null,msg]);
             }
        });
     }
