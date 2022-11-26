@@ -1,10 +1,9 @@
 # [node-red-contrib-array-permutations][1] <img src="array-permutations\icons\five-red-dice.png" width="100" height="50">
 
 
-node-red function that takes an array then generates pair permutations of all cells in a loop 
-or generation of cloned messages. For loop then message sent to second output on return to input port it sends the next permutation in loop until all have been processed. 
+node-red function that takes an array then generates permutation sets of specified size of all cells in a loop, generation of cloned messages or an array containing all possible permutations. For loop then message sent to second output on return to input port it sends the next permutation in loop until all have been processed. 
 
-![Array Permutations](documentation/arrayPermutations.JPG "Array Permutations") 
+![Array Permutations](documentation/arrayPermutations.png "Array Permutations") 
 
 ------------------------------------------------------------
 
@@ -25,6 +24,8 @@ Folder test contains a flow that tests the various combinations.
 ------------------------------------------------------------
 
 # Version
+
+0.0.5 fix bug with perms, added circular, heap, unique, random
 
 0.0.4 fix bug with loop and ensure all separated messages have unique id.
 

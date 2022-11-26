@@ -1,0 +1,833 @@
+[
+    {
+        "id": "e4cb30bc.6be58",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "5e13a0ea.89bbc",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "487b54ea.a5125c",
+        "type": "inject",
+        "z": "5e13a0ea.89bbc",
+        "name": "",
+        "topic": "",
+        "payload": "[1,2,3,4]",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 180,
+        "y": 200,
+        "wires": [
+            [
+                "e2f34b3e.7048a8"
+            ]
+        ]
+    },
+    {
+        "id": "8e2d4a69.3c87c8",
+        "type": "debug",
+        "z": "5e13a0ea.89bbc",
+        "name": "done",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 650,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "e2f34b3e.7048a8",
+        "type": "Array Permutations",
+        "z": "5e13a0ea.89bbc",
+        "name": "",
+        "action": "Messages",
+        "arrayProperty": "msg.payload",
+        "arrayTarget": "",
+        "setSize": "4",
+        "unique": "false",
+        "outputs": 2,
+        "x": 370,
+        "y": 200,
+        "wires": [
+            [
+                "8e2d4a69.3c87c8"
+            ],
+            [
+                "70ba7a5a.16918c"
+            ]
+        ]
+    },
+    {
+        "id": "15730138.e3acff",
+        "type": "Array Permutations",
+        "z": "5e13a0ea.89bbc",
+        "name": "Combinations",
+        "action": "Combinations",
+        "arrayProperty": "msg.payload",
+        "arrayTarget": "",
+        "setSize": "2",
+        "unique": "false",
+        "outputs": 2,
+        "x": 360,
+        "y": 280,
+        "wires": [
+            [
+                "8e2d4a69.3c87c8"
+            ],
+            [
+                "70ba7a5a.16918c"
+            ]
+        ]
+    },
+    {
+        "id": "db5998ae.d6522",
+        "type": "inject",
+        "z": "5e13a0ea.89bbc",
+        "name": "",
+        "topic": "",
+        "payload": "[1,2,3,4,5]",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 160,
+        "y": 280,
+        "wires": [
+            [
+                "15730138.e3acff"
+            ]
+        ]
+    },
+    {
+        "id": "70ba7a5a.16918c",
+        "type": "debug",
+        "z": "5e13a0ea.89bbc",
+        "name": "error",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 670,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "47a002f1.3dde24",
+        "type": "Array Permutations",
+        "z": "5e13a0ea.89bbc",
+        "name": "Loop",
+        "action": "Loop",
+        "arrayProperty": "msg.payload",
+        "arrayTarget": "msg.target",
+        "setSize": "2",
+        "unique": "false",
+        "outputs": 3,
+        "x": 330,
+        "y": 360,
+        "wires": [
+            [],
+            [
+                "70ba7a5a.16918c"
+            ],
+            [
+                "21b6bf.c107e942"
+            ]
+        ]
+    },
+    {
+        "id": "be1c197c.70ac",
+        "type": "inject",
+        "z": "5e13a0ea.89bbc",
+        "name": "",
+        "topic": "",
+        "payload": "[1,2,3,4,5]",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 140,
+        "y": 380,
+        "wires": [
+            [
+                "47a002f1.3dde24"
+            ]
+        ]
+    },
+    {
+        "id": "21b6bf.c107e942",
+        "type": "debug",
+        "z": "5e13a0ea.89bbc",
+        "name": "loop",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 670,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "fe600e1a.96a47",
+        "type": "inject",
+        "z": "5e13a0ea.89bbc",
+        "name": "",
+        "topic": "",
+        "payload": "{\"dataArray\":[1,2,3,4,5]}",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 150,
+        "y": 440,
+        "wires": [
+            [
+                "b68ae169.7bf13"
+            ]
+        ]
+    },
+    {
+        "id": "b68ae169.7bf13",
+        "type": "Array Permutations",
+        "z": "5e13a0ea.89bbc",
+        "name": "Combinations Loop",
+        "action": "CombinationLoop",
+        "arrayProperty": "msg.payload.dataArray",
+        "arrayTarget": "msg.payload.combination",
+        "setSize": 2,
+        "unique": "true",
+        "outputs": 3,
+        "x": 370,
+        "y": 440,
+        "wires": [
+            [
+                "8e2d4a69.3c87c8"
+            ],
+            [
+                "70ba7a5a.16918c"
+            ],
+            [
+                "21b6bf.c107e942",
+                "4ba9381a.cf7a18"
+            ]
+        ]
+    },
+    {
+        "id": "bbb44997.8f24f8",
+        "type": "inject",
+        "z": "5e13a0ea.89bbc",
+        "name": "",
+        "topic": "",
+        "payload": "[1,2,3,4]",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 180,
+        "y": 100,
+        "wires": [
+            [
+                "2d30abd6.c8f47c"
+            ]
+        ]
+    },
+    {
+        "id": "2d30abd6.c8f47c",
+        "type": "Array Permutations",
+        "z": "5e13a0ea.89bbc",
+        "name": "",
+        "action": "Loop",
+        "arrayProperty": "msg.payload",
+        "arrayTarget": "",
+        "setSize": "4",
+        "unique": "false",
+        "outputs": 3,
+        "x": 410,
+        "y": 100,
+        "wires": [
+            [
+                "8e2d4a69.3c87c8"
+            ],
+            [
+                "70ba7a5a.16918c"
+            ],
+            [
+                "21b6bf.c107e942",
+                "ddd5d9dd.3080a"
+            ]
+        ]
+    },
+    {
+        "id": "ddd5d9dd.3080a",
+        "type": "delay",
+        "z": "5e13a0ea.89bbc",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 420,
+        "y": 160,
+        "wires": [
+            [
+                "2d30abd6.c8f47c"
+            ]
+        ]
+    },
+    {
+        "id": "4ba9381a.cf7a18",
+        "type": "delay",
+        "z": "5e13a0ea.89bbc",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 440,
+        "y": 500,
+        "wires": [
+            [
+                "b68ae169.7bf13"
+            ]
+        ]
+    },
+    {
+        "id": "347fc68b.618b22",
+        "type": "inject",
+        "z": "5e13a0ea.89bbc",
+        "name": "",
+        "topic": "",
+        "payload": "[1,2,3]",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 170,
+        "y": 40,
+        "wires": [
+            [
+                "e9d72163.1eda"
+            ]
+        ]
+    },
+    {
+        "id": "e9d72163.1eda",
+        "type": "Array Permutations",
+        "z": "5e13a0ea.89bbc",
+        "name": "",
+        "action": "Permutations",
+        "arrayProperty": "msg.payload",
+        "arrayTarget": "",
+        "setSize": "3",
+        "unique": "false",
+        "outputs": 2,
+        "x": 430,
+        "y": 40,
+        "wires": [
+            [
+                "8e2d4a69.3c87c8"
+            ],
+            [
+                "70ba7a5a.16918c"
+            ]
+        ]
+    },
+    {
+        "id": "3d8e4e7b.be3af2",
+        "type": "Array Permutations",
+        "z": "e4cb30bc.6be58",
+        "name": "",
+        "action": "PermutationRandom",
+        "arrayProperty": "msg.payload",
+        "arrayTarget": "msg.payload",
+        "setSize": 2,
+        "unique": "true",
+        "outputs": 2,
+        "x": 350,
+        "y": 140,
+        "wires": [
+            [
+                "2e732869.0c5998"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "e3f326d2.855fa8",
+        "type": "inject",
+        "z": "e4cb30bc.6be58",
+        "name": "",
+        "topic": "",
+        "payload": "[1,2,3,4]",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 100,
+        "y": 140,
+        "wires": [
+            [
+                "3d8e4e7b.be3af2"
+            ]
+        ]
+    },
+    {
+        "id": "2e732869.0c5998",
+        "type": "debug",
+        "z": "e4cb30bc.6be58",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 770,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "45c9df89.531b5",
+        "type": "Array Permutations",
+        "z": "e4cb30bc.6be58",
+        "name": "",
+        "action": "PermutationsCircular",
+        "arrayProperty": "msg.payload",
+        "arrayTarget": "msg.payload",
+        "setSize": 2,
+        "unique": "true",
+        "outputs": 2,
+        "x": 340,
+        "y": 220,
+        "wires": [
+            [
+                "2e732869.0c5998"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "6e33412c.76dfa",
+        "type": "inject",
+        "z": "e4cb30bc.6be58",
+        "name": "",
+        "topic": "",
+        "payload": "[1,2,3,4]",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 100,
+        "y": 220,
+        "wires": [
+            [
+                "45c9df89.531b5"
+            ]
+        ]
+    },
+    {
+        "id": "ba664fe1.712ed",
+        "type": "inject",
+        "z": "e4cb30bc.6be58",
+        "name": "",
+        "topic": "",
+        "payload": "[1,2,3,4]",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 100,
+        "y": 320,
+        "wires": [
+            [
+                "c9e32ddb.b90de"
+            ]
+        ]
+    },
+    {
+        "id": "c9e32ddb.b90de",
+        "type": "Array Permutations",
+        "z": "e4cb30bc.6be58",
+        "name": "",
+        "action": "PermutationsCircularMessages",
+        "arrayProperty": "msg.payload",
+        "arrayTarget": "msg.payload",
+        "setSize": 2,
+        "unique": "true",
+        "outputs": 2,
+        "x": 370,
+        "y": 320,
+        "wires": [
+            [
+                "2e732869.0c5998"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "b6ba9339.304ab",
+        "type": "Array Permutations",
+        "z": "e4cb30bc.6be58",
+        "name": "",
+        "action": "PermutationsHeap",
+        "arrayProperty": "msg.payload",
+        "arrayTarget": "msg.payload",
+        "setSize": 2,
+        "unique": "true",
+        "outputs": 2,
+        "x": 340,
+        "y": 420,
+        "wires": [
+            [
+                "2e732869.0c5998"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "cdae3d22.d01a8",
+        "type": "inject",
+        "z": "e4cb30bc.6be58",
+        "name": "",
+        "topic": "",
+        "payload": "[1,2,3,4]",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 100,
+        "y": 420,
+        "wires": [
+            [
+                "b6ba9339.304ab"
+            ]
+        ]
+    },
+    {
+        "id": "de4020a9.60159",
+        "type": "inject",
+        "z": "e4cb30bc.6be58",
+        "name": "",
+        "topic": "",
+        "payload": "[1,2,3,4]",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 100,
+        "y": 520,
+        "wires": [
+            [
+                "b9297fc5.1a18b"
+            ]
+        ]
+    },
+    {
+        "id": "b9297fc5.1a18b",
+        "type": "Array Permutations",
+        "z": "e4cb30bc.6be58",
+        "name": "",
+        "action": "PermutationLoop",
+        "arrayProperty": "msg.payload",
+        "arrayTarget": "msg.payload",
+        "setSize": 2,
+        "unique": "false",
+        "outputs": 3,
+        "x": 390,
+        "y": 520,
+        "wires": [
+            [
+                "b858c21d.cc81"
+            ],
+            [
+                "2e732869.0c5998"
+            ],
+            [
+                "a4473f93.d7739",
+                "2e732869.0c5998"
+            ]
+        ]
+    },
+    {
+        "id": "a4473f93.d7739",
+        "type": "delay",
+        "z": "e4cb30bc.6be58",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 560,
+        "y": 600,
+        "wires": [
+            [
+                "b9297fc5.1a18b"
+            ]
+        ]
+    },
+    {
+        "id": "b858c21d.cc81",
+        "type": "debug",
+        "z": "e4cb30bc.6be58",
+        "name": "done",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 770,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "ebce76f9.81dd88",
+        "type": "inject",
+        "z": "e4cb30bc.6be58",
+        "name": "",
+        "topic": "",
+        "payload": "[1,2,3,4]",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 120,
+        "y": 680,
+        "wires": [
+            [
+                "7c01877d.0ac898"
+            ]
+        ]
+    },
+    {
+        "id": "7c01877d.0ac898",
+        "type": "Array Permutations",
+        "z": "e4cb30bc.6be58",
+        "name": "perm loop unique 2",
+        "action": "PermutationLoop",
+        "arrayProperty": "msg.payload",
+        "arrayTarget": "msg.payload",
+        "setSize": 2,
+        "unique": "true",
+        "outputs": 3,
+        "x": 410,
+        "y": 680,
+        "wires": [
+            [
+                "b858c21d.cc81"
+            ],
+            [
+                "2e732869.0c5998"
+            ],
+            [
+                "f20ba6cb.962db8",
+                "2e732869.0c5998"
+            ]
+        ]
+    },
+    {
+        "id": "f20ba6cb.962db8",
+        "type": "delay",
+        "z": "e4cb30bc.6be58",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 580,
+        "y": 760,
+        "wires": [
+            [
+                "7c01877d.0ac898"
+            ]
+        ]
+    },
+    {
+        "id": "301d1409.87913c",
+        "type": "inject",
+        "z": "e4cb30bc.6be58",
+        "name": "",
+        "topic": "",
+        "payload": "[1,2,3,4]",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 100,
+        "y": 840,
+        "wires": [
+            [
+                "77b2638e.0eddcc"
+            ]
+        ]
+    },
+    {
+        "id": "77b2638e.0eddcc",
+        "type": "Array Permutations",
+        "z": "e4cb30bc.6be58",
+        "name": "perm loop unique 3",
+        "action": "PermutationLoop",
+        "arrayProperty": "msg.payload",
+        "arrayTarget": "msg.payload",
+        "setSize": "3",
+        "unique": "true",
+        "outputs": 3,
+        "x": 390,
+        "y": 840,
+        "wires": [
+            [
+                "b858c21d.cc81"
+            ],
+            [
+                "2e732869.0c5998"
+            ],
+            [
+                "2cd514d7.c7ac1c",
+                "2e732869.0c5998"
+            ]
+        ]
+    },
+    {
+        "id": "2cd514d7.c7ac1c",
+        "type": "delay",
+        "z": "e4cb30bc.6be58",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 560,
+        "y": 920,
+        "wires": [
+            [
+                "77b2638e.0eddcc"
+            ]
+        ]
+    },
+    {
+        "id": "9ab16196.56baf",
+        "type": "inject",
+        "z": "e4cb30bc.6be58",
+        "name": "",
+        "topic": "",
+        "payload": "[1,2,3,4]",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 100,
+        "y": 1020,
+        "wires": [
+            [
+                "f520f5c4.603188"
+            ]
+        ]
+    },
+    {
+        "id": "f520f5c4.603188",
+        "type": "Array Permutations",
+        "z": "e4cb30bc.6be58",
+        "name": "perm loop 3",
+        "action": "PermutationLoop",
+        "arrayProperty": "msg.payload",
+        "arrayTarget": "msg.payload",
+        "setSize": "3",
+        "unique": "false",
+        "outputs": 3,
+        "x": 350,
+        "y": 1020,
+        "wires": [
+            [
+                "b858c21d.cc81"
+            ],
+            [
+                "2e732869.0c5998"
+            ],
+            [
+                "d0df8b7e.cb7228",
+                "2e732869.0c5998"
+            ]
+        ]
+    },
+    {
+        "id": "d0df8b7e.cb7228",
+        "type": "delay",
+        "z": "e4cb30bc.6be58",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 540,
+        "y": 1100,
+        "wires": [
+            [
+                "f520f5c4.603188"
+            ]
+        ]
+    }
+]

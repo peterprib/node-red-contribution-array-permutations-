@@ -1,26 +1,18 @@
 {
   "name": "node-red-contrib-array-permutations",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Node-red permutations of an array as repeat or messages.",
   "dependencies": {
     "node-red-contrib-logger": "*"
   },
   "devDependencies": {
-    "eslint": "^6.8.0",
-    "eslint-config-standard": "^14.1.0",
-    "eslint-plugin-import": "^2.19.1",
-    "eslint-plugin-mocha": "*",
-    "eslint-plugin-node": "^11.0.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1",
     "mocha": "*",
     "node-red": "*",
     "node-red-node-test-helper": "*"
   },
   "scripts": {
-    "test": "mocha \"test/**/*_spec.js\"",
-    "lint": "eslint --ext .js ./",
-    "lint-fix": "eslint --fix --ext .js ./"
+    "test": "mocha \"test/**/t*.js\"",
+    "startNodeRed": "pwd; node-red --userDir ./.temp --title '***test***' --setting ./test/data/settings.js ./test/data/flow.json"
   },
   "repository": {
     "type": "git",
@@ -28,8 +20,12 @@
   },
   "keywords": [
     "node-red",
+    "loop",
     "permutations",
+    "heap",
+    "random",
     "combinations",
+    "circular",
     "repeat",
     "array"
   ],

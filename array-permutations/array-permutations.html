@@ -1,5 +1,20 @@
-
 <script type="text/javascript">
+    const actions={
+        Combinations:{outputs:2,hide:["unique"]},
+        CombinationLoop:{outputs:3,label:"Combination Loop",hide:["unique"]},
+        CombinationMessages:{outputs:2,label:"Combination Messages",hide:["unique"]},
+        Loop:{outputs:3},
+        Messages:{outputs:2},
+        Permutations:{outputs:2},
+        PermutationsMessages:{outputs:2,label:"Permutation Messages"},
+        PermutationsCircular:{outputs:2,label:"Permutation Circular",hide:["setSize","unique"]},
+        PermutationsCircularMessages:{outputs:2,label:"Permutation Circular Messages",hide:["setSize","unique"]},
+        PermutationsHeap:{outputs:2,label:"Permutation Heap",hide:["setSize","unique"]},
+        PermutationLoop:{outputs:3,label:"Permutation Loop"},
+        PermutationRandom:{outputs:2,label:"Permutation Random",hide:["arrayProperty","setSize","unique"]},
+        PermutationsUnique:{outputs:2,label:"Permutations Unique",hide:["unique"]},
+        PermutationsUniqueMessages:{outputs:2,label:"Permutations Unique Messages",hide:["unique"]}
+    };
     /*globals RED */
     RED.nodes.registerType("Array Permutations", {
         category: 'function',
@@ -8,33 +23,51 @@
             name: {value: "",required:false},
             action: {value:"Loop",required:true},
             arrayProperty:{value:"msg.payload"},
+            arrayTarget:{value:"msg.payload"},
             setSize: {value:2,required:true,validate:RED.validators.number()},
             unique: {value:"true",required:true},
-            outputs: {value:3}
+            outputs:{value:2}
         },
 	    inputs:1,
         inputLabels: "",
-        outputs:3,
+        outputs:2,
         outputLabels: function(port) {
-			return this.action=="Loop"?(["end","error","loop"])[port]:(["messages","error"])[port];
+ 			return this.outputs==3?(["end","error","loop"])[port]:(["messages","error"])[port];
 		},
         icon: "five-red-dice.png",
         label: function() {
-            return this.name||this._("Array Permutations");
+            if(this.name) return this.name;
+            if(this.action) return actions[this.action].label||this.action;
+            return this._("Array Permutations");
         },
         labelStyle: function() {
             return "node_label_italic";
         },
         oneditprepare: function() {
-        	let node=this;
-	       	$("#node-input-action").change(function() {
-				if(["Loop"].includes( $(this).val() )) {
-					node.outputs=3;
-				} else {
-					node.outputs=2;
-				}
-	       	});
-			$("#node-input-action").change();
+            console.log("setup")
+        	const node=this;
+            const options=Object.keys(actions).reduce((previousValue,property)=>previousValue.concat({value:property,label:(actions[property].label||property)}),
+				[]);
+			const actionNode=$("#node-input-action");
+			actionNode.typedInput({
+                value:"actionType",
+                label:"Method",
+    			types: [{
+                    value:"actionType",
+            		options: options
+				}]
+			});
+            actionNode.change(function() {
+                const action=actions[$(this).val()]||{outputs:2}
+                node.outputs=action.outputs||2;
+                ["arrayProperty","arrayTarget","setSize","unique"].forEach(element=>
+                    $(".form-row-http-in-"+element).show()
+                )
+                if(action.hide) 
+                    action.hide.forEach(element => {
+                        $(".form-row-http-in-"+element).hide()
+                    });
+	       	}).change();
         },
         oneditsave: function() {
         },
@@ -53,20 +86,21 @@
     </div>
     <div class="form-row">
         <label for="node-input-action"><i class="fa fa-list-ul"></i> Method</label>
-        <select id="node-input-action" placeholder="action">
-            <option value="Loop">Loop</option>
-            <option value="Messages">Messages</option>
-        </select>
+        <input type="text" id="node-input-action">
     </div>
     <div class="form-row form-row-http-in-arrayProperty show">
         <label for="node-input-arrayProperty" style="white-space: nowrap"><i class="icon-bookmark"></i> Array Property </label>
         <input type="text" id="node-input-arrayProperty" placeholder="msg.payload">
     </div>
+    <div class="form-row form-row-http-in-arrayTarget show">
+        <label for="node-input-arrayTarget" style="white-space: nowrap"><i class="icon-bookmark"></i> Target Property </label>
+        <input type="text" id="node-input-arrayTarget" placeholder="msg.payload">
+    </div>
     <div class="form-row form-row-http-in-setSize show">
         <label for="node-input-setSize"><i class="icon-bookmark"></i> Set Size</label>
         <input type="number" id="node-input-setSize" placeholder="term" min=1 max=1000 step=1>
     </div>
-    <div class="form-row">
+    <div class="form-row form-row-http-in-unique show">
         <label for="node-input-unique"><i class="fa fa-list-ul"></i> Unique </label>
         <select id="node-input-unique" placeholder="true">
             <option value="true">True</option>
@@ -78,7 +112,8 @@
 
 <script type="text/x-red" data-help-name="Array Permutations">
     <p>
-	Loops thru or generates all permutation of cells in array for a set size put same set in msg.payload.
+	Loops thru or generates all permutation/combinations of cells in array from specified location 
+    for a set size putting the result in specifed target.
 	If size of set equals 1 each cell in array is done once. If set to 2, each pair combination is done once.
 	Inclusive/exclusive 
 	</p>
