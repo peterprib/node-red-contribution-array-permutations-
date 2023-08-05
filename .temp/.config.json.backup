@@ -360,7 +360,8 @@
     "array-permutations": {
      "name": "array-permutations",
      "types": [
-      "Array Permutations"
+      "Array Permutations",
+      "Array Combinations"
      ],
      "enabled": true,
      "local": false,
