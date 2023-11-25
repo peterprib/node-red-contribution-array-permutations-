@@ -12,7 +12,7 @@
   },
   "scripts": {
     "test": "mocha \"test/**/t*.js\"",
-    "startNodeRed": "pwd; node-red --userDir ./.temp --title '***test***' --setting ./test/data/settings.js ./test/data/flow.json"
+    "startNodeRed": "node-red --userDir ./.temp --title '***test***' --setting ./test/data/settings.js ./test/data/flow.json"
   },
   "repository": {
     "type": "git",
