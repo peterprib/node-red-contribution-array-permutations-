@@ -3,6 +3,7 @@
   "version": "0.0.5",
   "description": "Node-red permutations of an array as repeat or messages.",
   "dependencies": {
+    "node-red-contrib-array-permutations": "file:",
     "node-red-contrib-logger": "*"
   },
   "devDependencies": {
